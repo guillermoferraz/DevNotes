@@ -1,0 +1,36 @@
+{{> menu}}
+
+<div class="row mt-3 m-0 p-0 ">
+	{{#each notes}}
+	<div class="col-md-3 mt-3 p-2 m-0">
+		<div class="card">
+			<div class="card-header-sm bg-warning ">
+				<div class="dropdown">
+			        <a  href="#" title="Opciones" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         <i class="fas fa-cogs text-dark p-2" ></i>
+			        </a>
+
+			        <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+			          
+			          <a class="dropdown-item" href="/main/editNote/{{_id}}">Editar</a>
+			          <form action="/menu/notes/delete/{{_id}}?_method=DELETE" method="POST">
+			          	<input type="hidden" name="_method" value="DELETE">
+			          	<button type="submit" class="dropdown-item">Eliminar</button>
+			          </form>
+			        </div>
+        		</div>
+				
+			</div>
+			<div class="card-body">
+				<h4 class="card-title d-flex justify-content-center p-1">
+				{{title}}
+				</h4>
+
+				<p>{{description}}</p>
+
+			</div>
+					
+		</div>		
+	</div>	
+	{{/each}}
+</div>

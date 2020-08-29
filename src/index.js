@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const expHbs = require('express-handlebars');
+const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
@@ -31,6 +32,7 @@ app.set('view engine', '.hbs');
 
 //Middlewares
 app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 app.use(session({
 	secret: 'h19',
 	resave: true,
@@ -59,8 +61,7 @@ app.use((req, res, next) => {
 //Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/users'));
-app.use(require('./routes/menu'));
-app.use(require('./routes/notes'))
+app.use(require('./routes/notes'));
 
 //
 
