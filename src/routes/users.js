@@ -53,6 +53,13 @@ router.post('/users/signUp', async (req, res) => {
 	if(errors.length > 0) {
 		res.render('users/signUp', {errors, name, username, password, confirm_password});
 	} else {
+		const emailUser = await User.findOne({email: email});
+		if(emailUser) {
+			req.flash('error_msg', 'El email ingrasado ya esta en uso');
+			res.redirect('/users/signUp');
+		}
+
+
 		const newUser = new User({name, username, email, password});
 		newUser.password = await newUser.encryptPassword(password);
 	

@@ -2,6 +2,9 @@ const passport = require('passport');
 const LocalStartegy = require('passport-local').Strategy;
 
 const User = require('../models/User');
+const Table = require('../models/Table');
+
+
 
 passport.use(new LocalStartegy({
 	usernameField: 'email'
@@ -27,3 +30,4 @@ passport.deserializeUser((id, done) => {
 		done(err, user);
 	});
 });
+

@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  {{#each tables}}
+  <div class="card-title">
+    <h4>{{title}}</h4>
+  </div>
+  <table class="table table-dark table-striped table-bordered ">
+    <thead class="table table-success">
+      <tr>
+        <th >Objeto</th>
+        <th class="col-md-8">Descripcion</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody > 
+    
+    
+      <tr >
+        <td>{{object}}</td>
+        <td>{{description}}</td>
+        <td class="text-center"><a class="btn btn-warning btn-md" href="/main/newContent/{{_id}}" title="Agregar datos"><i class="fas fa-edit text-white float-right rext"></i></a></td>
+        <td class="text-center">
+          <form action="/main/deleteContent/{{_id}}?_method=DELETE" method="POST" >
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+          </form>
+        </td>
+
+      </tr>
+      
+    </tbody>
+    
+</table>
+  
+  {{/each}}
+</div>
