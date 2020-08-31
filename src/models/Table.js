@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const TableSchema = new Schema({
-	title: { type: String, required: true },
+	group: { type: String, required: true },
 	object: { type: String, required: true },
 	description: { type: String, required: true },
 	date:{ type: Date, default: Date.now },
