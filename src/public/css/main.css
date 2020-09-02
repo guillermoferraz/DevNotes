@@ -8,6 +8,40 @@
 #cardHeader{
 	background-color: rgba(0,128,0,0.8);
 }
+#cardsDanger {
+	box-shadow: 2px 2px 2px 2px rgba(255,0,0,0.5);
+}
+#cardHeaderDanger{
+	background-color: rgba(255,0,0,0.8);
+}
+#cardsWarning {
+	box-shadow: 2px 2px 2px 2px rgba(255,165,0,0.5);
+}
+#cardHeaderWarning{
+	background-color: rgba(255,165,0,0.8);
+}
+#cardsInfo {
+	box-shadow: 2px 2px 2px 2px rgba(0,144,255,0.5);
+}
+#cardHeaderInfo{
+	background-color: rgba(0,144,255,0.8);
+}
+#headerNoteSuccess{
+	background-color: rgba(0,128,0,0.8);
+
+}
+#headerNoteWarning{
+	background-color: rgba(255,165,0,0.8);
+
+}
+#headerNoteDanger{
+	background-color: rgba(255,0,0,0.8);
+
+}
+#headerNoteInfo{
+	background-color: rgba(0,144,255,0.8);
+
+}
 #descriptionRow{
 	width: 1200px;
 }

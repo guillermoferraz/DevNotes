@@ -33,4 +33,100 @@
 		</div>		
 	</div>	
 	{{/each}}
+	{{#each notesDanger}}
+	<div class="col-md-3 mt-3 p-2 m-0">
+		<div class="card" id="cardsDanger">
+			<div class="card-header-sm " id="cardHeaderDanger">
+				<div class="dropdown">
+			        <a  href="#" title="Opciones" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         <i class="fas fa-cogs text-dark p-2" ></i>
+			        </a>
+
+			        <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+			          
+			          <a class="dropdown-item" href="/main/editNoteDanger/{{_id}}">Editar</a>
+			          <form action="/menu/notes/deleteDanger/{{_id}}?_method=DELETE" method="POST">
+			          	<input type="hidden" name="_method" value="DELETE">
+			          	<button type="submit" class="dropdown-item">Eliminar</button>
+			          </form>
+			        </div>
+        		</div>
+				
+			</div>
+			<div class="card-body">
+				<h4 class="card-title d-flex justify-content-center p-1">
+				{{title}}
+				</h4>
+
+				<p>{{description}}</p>
+
+			</div>
+					
+		</div>		
+	</div>	
+	{{/each}}
+	{{#each notesWarning}}
+	<div class="col-md-3 mt-3 p-2 m-0">
+		<div class="card" id="cardsWarning">
+			<div class="card-header-sm " id="cardHeaderWarning">
+				<div class="dropdown">
+			        <a  href="#" title="Opciones" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         <i class="fas fa-cogs text-dark p-2" ></i>
+			        </a>
+
+			        <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+			          
+			          <a class="dropdown-item" href="/main/editNoteWarning/{{_id}}">Editar</a>
+			          <form action="/menu/notes/deleteWarning/{{_id}}?_method=DELETE" method="POST">
+			          	<input type="hidden" name="_method" value="DELETE">
+			          	<button type="submit" class="dropdown-item">Eliminar</button>
+			          </form>
+			        </div>
+        		</div>
+				
+			</div>
+			<div class="card-body">
+				<h4 class="card-title d-flex justify-content-center p-1">
+				{{title}}
+				</h4>
+
+				<p>{{description}}</p>
+
+			</div>
+					
+		</div>		
+	</div>	
+	{{/each}}
+	{{#each notesInfo}}
+	<div class="col-md-3 mt-3 p-2 m-0">
+		<div class="card" id="cardsInfo">
+			<div class="card-header-sm " id="cardHeaderInfo">
+				<div class="dropdown">
+			        <a  href="#" title="Opciones" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         <i class="fas fa-cogs text-dark p-2" ></i>
+			        </a>
+
+			        <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+			          
+			          <a class="dropdown-item" href="/main/editNoteInfo/{{_id}}">Editar</a>
+			          <form action="/menu/notes/deleteInfo/{{_id}}?_method=DELETE" method="POST">
+			          	<input type="hidden" name="_method" value="DELETE">
+			          	<button type="submit" class="dropdown-item">Eliminar</button>
+			          </form>
+			        </div>
+        		</div>
+				
+			</div>
+			<div class="card-body">
+				<h4 class="card-title d-flex justify-content-center p-1">
+				{{title}}
+				</h4>
+
+				<p>{{description}}</p>
+
+			</div>
+					
+		</div>		
+	</div>	
+	{{/each}}
 </div>
