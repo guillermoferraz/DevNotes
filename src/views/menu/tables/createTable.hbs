@@ -1,41 +1,113 @@
-<div class="container mt-4">
+
+
+{{!-- <div class="container mt-4">
+  <form class="" >
+      <div class="row">
+        <input class="form-control mr-sm-0 col-8" type="text" onkeyup="showResults(this.value)" placeholder="Buscar datos en tabla" id="inputSearch"></input><button class="btn btn-outline-danger  my-sm-0 font-weight-bold ml-3"   type="submit">Buscar</button>
+        <div class="col-4 m-0 p-0" id="searchBox">
+          
+        
+          <div class="container">
+            <table class="table table-light  table-striped table-bordered m-0 p-0">
+            <tbody>
+              <tr >
+                <td class="bg-light" id="searchResults"></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div> 
+      <script>
+
+var showResults = debounce(function (arg) {
+  var value = arg.trim();
+  if(value == "" || value.length <= 0) {
+    $("#searchResults").fadeOut();
+    return;
+  }
+  else {
+    $("#searchResults").fadeIn();
+  };
+  var jqxhr = $.get('/main/search?q=' + value, function (data) {
+    $("#searchResults").html("");
+  })
+  .done(function (data) {
+    if(data.length === 0) {
+      $("#searchResults").append('<p class="lead text-center text-dark mt-2">No hay reultados</p>');
+    }else {
+      data.forEach(x => {
+        $("#searchResults").append('<a ><tr><p id="searchConfig" class="lead text-dark">'+ x.group+'</p></tr> </a>');
+        
+        
+
+      });
+    }
+  })
+  .fail(function (err) {
+    console.log(err);
+  })
+}, 200);
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this,
+    args = arguments;
+    var later = function () {
+      timeout = null;
+      if(!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if(callNow) func.apply(context, args);
+  };
+};
+
+</script> --}}
+
+    </form>
+</div>
+
+<div class="container mt-4 col-12">
  
-    <table class="table table-dark table-striped table-bordered col-12">
-    <thead class="table table-success">
+    <table class="table table-dark table-striped table-bordered m-0 p-0">
+    <thead class="table table-danger">
       <tr>
-        <th class="col-2">Grupo</th>
-        <th class="col-3">Objeto</th>
-        <th class="col-md-7">Descripcion</th>
-        <th class="col-1">Modificar</th>
-        <th class="col-1">Eliminar</th>
+        <th  id="groupRow">Grupo</th>
+        <th  id="groupRow">Objeto</th>
+        <th  id="descriptionRow">Descripcion</th>
+        <th id="editRow">Modificar</th>
+        <th id="deleteRow">Eliminar</th>
       </tr>
     </thead>
  
   
   {{#each tables}}
   
-    <table class="table table-dark table-striped table-bordered m-0 p-0 ">
+    <table class="table table-dark table-striped table-bordered m-0 p-0">
     
       <tr class="m-0 p-0 d-none">
-        <th class="col-md-2"></th>
-        <th class="col-md-3"></th>
-        <th class="col-md-6"></th>
-        <th class="col-1"></th>
-        <th class="col-1"></th>
+        <th  id="groupRow"></th>
+        <th id="objectRow"></th>
+        <th id="descriptionRow"></th>
+        <th id="editRow"></th>
+        <th id="deleteRow"></th>
       </tr>
     
    
      
     <tbody class="m-0 p-0"> 
       <tr class="m-0 p-0">
-        <td class="col-2">{{group}}</td>
-        <td class="col-3">{{object}}</td>
-        <td class="col-6">{{description}}</td>
-        <td class="text-center"><a class="btn btn-warning btn-md" href="/main/newContent/{{_id}}" title="Agregar datos"><i class="fas fa-edit text-white float-right rext"></i></a></td>
-        <td class="text-center">
+        <td id="groupRow">{{group}}</td>
+        <td  id="objectRow">{{object}}</td>
+        <td  id="descriptionRow">{{description}}</td>
+        <td id="editRow" class="text-center"><a class="btn btn-warning btn-md rounded-bottom" href="/main/newContent/{{_id}}" title="Agregar datos"><i class="fas fa-edit text-white float-right rext"></i></a></td>
+        <td id="deleteRow" class="text-center">
           <form action="/main/deleteContent/{{_id}}?_method=DELETE" method="POST" >
             <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+            <button type="submit" class="btn btn-danger btn-sm rounded-circle"><i class="fas fa-trash-alt"></i></button>
           </form>
         </td>
 

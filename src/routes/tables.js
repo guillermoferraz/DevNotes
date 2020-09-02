@@ -27,7 +27,7 @@ router.post('/menu/tables/newTable', isAuthenticated, async (req, res) => {
 	} else {/*
 		const groupTable = await Table.findOne({group: title});
 		if(titleTable) {
-			req.flash('error_msg', 'El titlo ingrasado ya esta en uso');
+			req.flash('error_msg', 'El titulo ingrasado ya existe');
 		res.redirect('/main/newTable');
 
 		}*/
@@ -47,6 +47,7 @@ router.get('/main/newContent/:id', isAuthenticated, async (req, res) => {
 	res.render('menu/tables/newContent', { table });
 });
 
+
 router.put('/main/newContent/:id', isAuthenticated, async (req, res) => {
 	const {group, object, description} = req.body;
 	await Table.findByIdAndUpdate(req.params.id, {group, object, description});
@@ -59,5 +60,24 @@ router.delete('/main/deleteContent/:id', isAuthenticated, async (req, res) => {
 	req.flash('success_msg', 'Datos eliminados con exito.');
 	res.redirect('/main/myTables');
 });
+
+// router.get('/main/search', isAuthenticated, function (req, res, next) {
+// 	const table = Table.find({user: req.user.id}).sort('group');
+	
+// 	var q = req.query.q;
+
+// 	Table.find({
+// 		group: {
+// 			$regex: new RegExp(q)
+// 		}
+// 	}, {
+
+// 		_id: 0,
+// 		__v: 0
+// 	}, function (err, data) {
+// 		res.json(data);
+// 	}).limit(10);
+// });
+
 
 module.exports = router;

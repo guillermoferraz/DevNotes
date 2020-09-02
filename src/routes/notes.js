@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Note = require('../models/Note');
+const NoteDanger = require('../models/NoteDanger');
 const { isAuthenticated } = require('../helpers/auth')
 
 
@@ -15,7 +16,7 @@ router.post('/menu/notes/newNote', isAuthenticated, async (req,res) => {
 	newNote.user = req.user.id;
 	console.log(newNote);
 	await newNote.save();
-	req.flash('success_msg', 'Nota agregada con exito.')
+	req.flash('success_msg', 'Nota agregada con exito.');
 
 
 	res.redirect('/main/start');
@@ -42,6 +43,8 @@ router.put('/main/editNote/:id', isAuthenticated, async (req, res) => {
 	res.redirect('/main/start');
 
 });
+//Notes Color danger
+
 
 
 module.exports = router;

@@ -1,12 +1,77 @@
 <div class="container p-0 mt-2 col-12 ">
-    <form class="form-inline float-right mr-4">
-      <input class="form-contruser.name}}ol mr-sm-2" type="text" placeholder="Buscar datos">
-      <button class="btn btn-outline-danger  my-sm-0 font-weight-bold" type="submit">Buscar</button>
-    </form>
+    {{!-- <form class="form-inline float-right mr-4" >
+      <div class="row">
+        <input class="form-control mr-sm-0 col-8" type="text" onkeyup="showResults(this.value)" placeholder="Buscar datos en tabla" id="inputSearch"></input><button class="btn btn-outline-danger  my-sm-0 font-weight-bold ml-3"   type="submit">Buscar</button>
+        <div class="col-4 m-0 p-0" id="searchBox">
+          
+        
+          <table class="table table-dark table-striped table-bordered m-0 p-0">
+            <tbody>
+              <tr >
+                <td id="searchResults"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </form> --}}
+    
     <div class="card col-sm-2 p-0 ">
        <div class="card-body p-1">
-         <p>Desarrollador:</p>
-         <h4>{{user.username}}</h4>
+         <h5>Desarrollador : {{user.username}}</h5>
+         
+         <p>{{user.email}}</p>
        </div>
      </div> 
 </div>
+
+
+<script>
+
+// var showResults = debounce(function (arg) {
+//   var value = arg.trim();
+//   if(value == "" || value.length <= 0) {
+//     $("#searchResults").fadeOut();
+//     return;
+//   }
+//   else {
+//     $("#searchResults").fadeIn();
+//   };
+//   var jqxhr = $.get('/main/search?q=' + value, function (data) {
+//     $("#searchResults").html("");
+//   })
+//   .done(function (data) {
+//     if(data.length === 0) {
+//       $("#searchResults").append('<p class="lead text-center text-white mt-2">No hay reultados</p>');
+//     }else {
+//       data.forEach(x => {
+//         $("#searchResults").append('<a ><tr><p id="searchConfig" class="lead text-white">'+ x.group+'</p></tr> </a>');
+        
+        
+
+//       });
+//     }
+//   })
+//   .fail(function (err) {
+//     console.log(err);
+//   })
+// }, 200);
+
+// function debounce(func, wait, immediate) {
+//   var timeout;
+//   return function() {
+//     var context = this,
+//     args = arguments;
+//     var later = function () {
+//       timeout = null;
+//       if(!immediate) func.apply(context, args);
+//     };
+//     var callNow = immediate && !timeout;
+//     clearTimeout(timeout);
+//     timeout = setTimeout(later, wait);
+//     if(callNow) func.apply(context, args);
+//   };
+// };
+
+// </script>
