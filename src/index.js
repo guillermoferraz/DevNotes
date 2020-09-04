@@ -1,10 +1,14 @@
 const express = require('express');
 const path = require('path');
+const morgan = require('morgan');
 const expHbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const multer = require('multer');
+const uuid = require('uuid/v4');
+const { format } = require('timeago.js');
 
 //Initializations
 
@@ -31,6 +35,7 @@ app.set('view engine', '.hbs');
 //
 
 //Middlewares
+app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(session({
@@ -38,6 +43,21 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
+
+//configuro metodo para el guardado de imagenes.
+const storage = multer.diskStorage({
+	destination: path.join(__dirname, 'public/img/uploadState'),
+	filename: (req, file, cb, filename) => {
+		cb(null, uuid() + path.extname(file.originalname));
+	}
+});
+app.use(multer({
+	storage: storage
+}).single('image'));
+
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -63,6 +83,7 @@ app.use(require('./routes/index'));
 app.use(require('./routes/users'));
 app.use(require('./routes/notes'));
 app.use(require('./routes/tables'));
+app.use(require('./routes/community'));
 
 //
 

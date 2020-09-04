@@ -3,25 +3,25 @@
 	font-size: 20px;
 }
 #cards {
-	box-shadow: 2px 2px 2px 2px rgba(0,128,0,0.5);
+	box-shadow: 2px 2px 2px 2px rgba(0,128,0,0.3);
 }
 #cardHeader{
 	background-color: rgba(0,128,0,0.8);
 }
 #cardsDanger {
-	box-shadow: 2px 2px 2px 2px rgba(255,0,0,0.5);
+	box-shadow: 2px 2px 2px 2px rgba(255,0,0,0.3);
 }
 #cardHeaderDanger{
 	background-color: rgba(255,0,0,0.8);
 }
 #cardsWarning {
-	box-shadow: 2px 2px 2px 2px rgba(255,165,0,0.5);
+	box-shadow: 2px 2px 2px 2px rgba(255,165,0,0.3);
 }
 #cardHeaderWarning{
 	background-color: rgba(255,165,0,0.8);
 }
 #cardsInfo {
-	box-shadow: 2px 2px 2px 2px rgba(0,144,255,0.5);
+	box-shadow: 2px 2px 2px 2px rgba(0,144,255,0.3);
 }
 #cardHeaderInfo{
 	background-color: rgba(0,144,255,0.8);
@@ -75,4 +75,19 @@
 	opacity: .70;
 
 }*/
-
+#radioDev{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 250px;
+}
+#containerRadio{
+	width: 300px;
+}
+#radioViewShow{
+	z-index: 100;
+	position: relative;
+}
+#radioViewHide{
+	z-index: 100;
+	position: relative;
+}

@@ -1,0 +1,71 @@
+
+
+	<div class="container float-right col-md-3" id="containerRadio">
+	
+	<div class="card">
+
+		<div class="card-header text-center">
+			<a id="radioViewShow" href="#" title=""><i class="fas fa-chevron-down ml-2 float-right"></i></a><a id="radioViewHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5"></i></a>
+			<h4>RadioDev<i class="fas fa-podcast ml-2"></i></h4>
+
+		</div>
+		<div class="form-row justify-content-between" id="radioDev">
+			<div class="container">
+				<div class="form-row mt-4 col-12 p-0">
+				<p class="mt-3">Alternative Rock v1</p>
+				<audio  id="playerControls" src=" http://185.33.21.112:80/x_128" type="audio/mp3" controls="controls"></audio>
+			</div>
+			</div>
+			<div class="container">
+				<div class="form-row mt-4">
+				<p class="mt-3">Classic Rock</p>
+				<audio id="playerControls" src=" http://145.14.14.93:9034/rock" type="audio/mp3" controls="controls" ></audio>
+			</div>
+			</div>
+			<div class="container">
+				<div class="form-row mt-4">
+				<p class="mt-3">Hard Radio</p>
+				<audio id="playerControls" src="http://144.217.29.205:80/live" type="audio/mp3" controls="controls" ></audio>
+			</div>
+			</div>
+			<div class="container">
+				<div class="form-row mt-4">
+				<p class="mt-3">Electronica</p>
+				<audio id="playerControls" src=" http://198.24.145.146:9664/stream " type="audio/mp3" controls="controls" ></audio>
+			</div>
+			</div>
+			<div class="container">
+				<div class="form-row mt-4">
+				<p class="mt-3">Pop</p>
+				<audio id="playerControls" src="http://66.85.88.174:80/hitlist" type="audio/mp3" controls="controls" ></audio>
+			</div>
+			</div>
+			<div class="container">
+				<div class="form-row mt-4">
+				<p class="mt-3">Metal rock</p>
+				<audio id="playerControls" src="http://209.95.50.189:8066/stream " type="audio/mp3" controls="controls" ></audio>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+
+ <script>
+ $(document).ready(function(){
+ 	$('#radioDev').hide();
+ 	$(document).on('click', '#radioViewShow', function(){
+ 		$('#radioDev').show('slow');		
+ 	});
+ 	$(document).on('click', '#radioViewHide', function(){
+ 		$('#radioDev').hide('slow');		
+ 	});
+ 	
+ });
+ 
+
+ </script>

@@ -1,0 +1,106 @@
+{{> radio}}
+
+
+<div class="container mt-4" id="communityMaster">
+	<div class="card col-8 p-0 mx-auto">
+		<div class="card-header">
+			<a id="publicateShow" href="#" title=""><i class="fas fa-chevron-down ml-2 float-right"></i></a><a id="publicateHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5"></i></a>
+			<div class="card-title">
+				<h4>Publica en la  comunidad</h4>
+			</div>
+		</div>
+		<div class="card-body" id="publicateCard">
+			<div class="form-inline">
+				<div class="card-body ">
+					<button id="stateShow" class="btn btn-success font-weight-bold btn-block">Estado</button>
+				</div>
+				<div class="card-body">
+					<button class="btn btn-info font-weight-bold btn-block">Informacion</button>
+				</div>
+				
+			</div>
+		</div>
+		<div class="card col-6 mt-4 p-0" id="stateCard">
+			<div class="card-header m-0 ">
+				<a id="stateHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5"></i></a>
+				<div class="card-title m-0">
+					<h4>Publica un Estado</h4>
+				</div>
+			</div>
+			<div class="card-body">
+				<form  action="/main/community/uploadState" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<input type="hidden" name="username" value="{{user.username}}">
+						<textarea class="form-control m-2" type="text" name="state" placeholder="Escribe tu estado" autofocus=""></textarea>
+						<div class="input-group">
+							<div class="custom-file m-2">
+							<input type="file" name="image" class="custom-file-input" id="image">
+							<label class="custom-file-label">Imagen</label>
+						</div>
+						</div>
+						<div class="form-group mt-4"  id="state">
+							<button  type="submit" class="btn btn-primary btn-block">Publicar</button>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+
+	
+</div>
+
+<div class="container p-4">
+	<div class="row">
+		<div class="card-columns p-3">
+			{{#each images}}
+
+			<div class="card p-3">
+				
+				
+				<img src="{{path}}" class="card-img-top" alt="">
+				<div class="card-body">
+					<h5 class="card-title">{{state}}</h5>
+					
+					<p class="float-right">{{username}}</p>
+					
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</div>
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+
+ <script>
+ $(document).ready(function(){
+ 	$('#publicateCard').hide();
+ 	$(document).on('click', '#publicateShow', function(){
+ 		$('#publicateCard').show('slow');		
+ 	});
+ 	$(document).on('click', '#publicateHide', function(){
+ 		$('#publicateCard').hide('slow');		
+ 	});
+ 	
+ }); 
+$(document).ready(function(){
+	$('#stateCard').hide();
+	$(document).on('click', '#stateShow', function(){
+		$('#stateCard').show('slow');
+	});
+	$(document).on('click', '#stateHide', function(){
+		$('#stateCard').hide('slow');
+	});
+});
+
+
+ </script>
