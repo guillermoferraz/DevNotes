@@ -1,4 +1,5 @@
-<div class="container p-0 mt-2 col-12 ">
+<div class="container p-0  col-12 ">
+
     {{!-- <form class="form-inline float-right mr-4" >
       <div class="row">
         <input class="form-control mr-sm-0 col-8" type="text" onkeyup="showResults(this.value)" placeholder="Buscar datos en tabla" id="inputSearch"></input><button class="btn btn-outline-danger  my-sm-0 font-weight-bold ml-3"   type="submit">Buscar</button>
@@ -17,13 +18,54 @@
       
     </form> --}}
     
-    <div class="card col-sm-2 p-0 ">
+   {{!--  <div class="card col-sm-2 p-0 ">
        <div class="card-body p-1">
-         <h5>Desarrollador : {{user.username}}</h5>
+        
+         <div class="row m-2">
+           <h5 class="text-center m-2"> <img class="avatar rounded-circle float-right m-2"src="https://i.blogs.es/82402a/rami-malek-mr-robot-cuarta-temporada-opinion/1366_2000.jpeg">
+        {{user.username}}</h5>
+         </div>
+        
+           
          
-         <p>{{user.email}}</p>
+         <p class="m-2">{{user.email}}</p>
        </div>
-     </div> 
+     </div>  --}}
+</div>
+<div class="container m-0 p-0 " id="containerAvatar">
+
+  <div class="card bg-transparent m-0 p-2  border-danger col-sm-2">
+
+    <div class="card-body text-center m-0 p-0">
+      <div>
+        <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item dropdown m-0 p-0 ">
+        <a class="nav-link dropdown-toggle float-right mr-1 p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cogs text-light p-2" ></i></a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/main/myProfile/selectAvatar/form">Seleccionar imagen de perfil</a>
+          
+
+          <a class="dropdown-item" href="/main/myProfile/myImage" id="createAndEditNote">Editar Perfil</a>
+          
+
+
+          <a class="dropdown-item" href="">Cambair nombre de usuario</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/users/logOut">Cerrar sesion</a>     
+        </div>
+      </li>
+      
+    </ul>
+      </div>
+      <div class="form-inline justify-content-center m-0 p-0">
+        {{#each avatar}}
+        <a href="{{path}}" target="_blank" title="ver imagen"><img class="avatar rounded-circle float-right m-0 p-0"src="{{path}}"></a>
+        {{/each}}
+      </div>
+    <p>{{user.username}}</p>
+    </div>
+  </div>
 </div>
 
 

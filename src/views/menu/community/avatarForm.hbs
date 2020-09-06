@@ -1,0 +1,26 @@
+<div class="card col-md-4 m-3 mx-auto p-0">
+	<div class="card-header text-center bg-primary">
+		<div class="card-title">
+			<h4>Imagen de Perfil</h4>
+		</div>
+	</div>	
+		<div class="card-body">
+		<form  action="/main/myProfile/selectAvatar" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				{{!-- <input type="hidden" name="username" value="{{user.username}}"> --}}
+				<div class="input-group">
+					<div class="custom-file m-2">
+					<input type="file" name="image"  id="avatar">
+					<label class=" text-center"></label>
+
+				</div>
+				</div>
+				<div class="form-group mt-4"  id="state">
+					<button  type="submit" class="btn btn-primary btn-block">Publicar</button>
+				</div>
+			</div>
+		</form>
+				
+ 	</div>
+	
+</div>

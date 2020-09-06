@@ -1,0 +1,64 @@
+<div class="col-md-4 mx-auto mt-4" >
+	<div class="card">
+		<div class="card-header">
+			<h3>Editar perfil</h3>
+		</div>
+		<div class="card-body">
+			<div class="form-inline">
+				<a id="deleteImage" class="btn btn-danger btn-block">Eliminar imagen</a>
+				<a class="btn btn-warning btn-block">Cambiar nombre de usuario</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div>
+	{{#each avatar}}
+	<div class="card col-4 p-0" id="deleteAvatarForm">
+		<div class="card-header">
+			<div class="card-title">
+				<a id="hideAvatarForm" class="btn btn-danger bg-transparent border-0 float-right text-warning"><i class="far fa-times-circle"></i></a>
+				<h4>Imagen actual</h4>
+			</div>
+		</div>
+		<div class="card-body">
+		<img class="img-thumbnail" src="{{path}}"></img>
+	</div>
+	<form action="/main/myProfile/myImage/{{_id}}?_method=DELETE" method="POST">
+		<input type="hidden" name="method" value="DELETE"></input>
+		<div class="form-inline ">
+			<button class="btn btn-danger btn-block m-3" type="submit" href="'/main/myProfile/myImage/:id'" title="Eliminar">Eliminar</button>		
+		</div>
+	</form>
+	</div>
+	
+
+	{{/each}}
+</div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  
+
+<script>
+$(document).ready (function(){
+	$('#deleteAvatarForm').hide();
+
+	$(document).on('click', '#deleteImage', function(){
+		$('#deleteAvatarForm').show('slow');
+
+		$('#deleteAvatarForm').show();
+		document.getElementById('hideAvatarForm').addEventListener('click', hideAvatarForm);
+		function hideAvatarForm(){
+			$('#deleteAvatarForm').hide('slow');
+		};
+	});
+});
+
+	
+
+</script>

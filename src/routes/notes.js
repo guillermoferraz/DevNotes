@@ -3,6 +3,7 @@ const Note = require('../models/Note');
 const NoteDanger = require('../models/NoteDanger');
 const NoteWarning = require('../models/NoteWarning');
 const NoteInfo = require('../models/NoteInfo');
+const Avatar = require('../models/Avatar');
 const { isAuthenticated } = require('../helpers/auth')
 
 
@@ -89,7 +90,8 @@ router.get('/main/start', isAuthenticated, async (req, res) => {
 	const notesDanger = await NoteDanger.find({user: req.user.id}).sort({date: 'desc'});
 	const notesWarning = await NoteWarning.find({user: req.user.id}).sort({date: 'desc'});
 	const notesInfo = await NoteInfo.find({user: req.user.id}).sort({date: 'desc'});
-	res.render('menu/notes/allNotes', { notes, notesDanger, notesWarning, notesInfo });
+	const avatar = await Avatar.find({user: req.user.id}).sort({created_at: 'desc'});
+	res.render('menu/notes/allNotes', { notes, notesDanger, notesWarning, notesInfo, avatar});
 });
 router.delete('/menu/notes/delete/:id', isAuthenticated, async(req, res) => {
 	await Note.findByIdAndDelete(req.params.id);

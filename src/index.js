@@ -51,9 +51,13 @@ const storage = multer.diskStorage({
 		cb(null, uuid() + path.extname(file.originalname));
 	}
 });
+
 app.use(multer({
 	storage: storage
 }).single('image'));
+
+
+
 
 
 
@@ -72,6 +76,8 @@ app.use((req, res, next) => {
 	res.locals.error = req.flash('error');
 	res.locals.user = req.user || null;
 	res.locals.email = req.email || null;
+	app.locals.format = format;
+
 
 	next();
 });

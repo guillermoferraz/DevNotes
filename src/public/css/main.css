@@ -80,6 +80,9 @@
 	overflow-x: hidden;
 	height: 250px;
 }
+#radioDevTable{
+	z-index: 100;
+}
 #containerRadio{
 	width: 300px;
 }
@@ -90,4 +93,15 @@
 #radioViewHide{
 	z-index: 100;
 	position: relative;
+}
+.avatar {
+	width: 80px;
+	height: 80px;
+	
+}
+#containerAvatar{
+	height: 100px;
+	position: relative;
+	z-index: 99;
+	font-weight: bold; 
 }

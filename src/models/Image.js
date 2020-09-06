@@ -7,6 +7,7 @@ const imageSchema = new Schema({
 	path: { type: String },
 	mimetype: { type: String },
 	size: { type: Number },
+	user: { type: String },
 	created_at: { type: Date, default: Date.now() } 
 });
 

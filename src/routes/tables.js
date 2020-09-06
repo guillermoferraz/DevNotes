@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Table = require('../models/Table');
+const Avatar = require('../models/Avatar');
 const { isAuthenticated } = require('../helpers/auth');
 
 
@@ -7,7 +8,8 @@ const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/main/myTables', isAuthenticated, async (req, res) => {
 	const tables = await Table.find({user: req.user.id}).sort('group');
-	res.render('menu/tables/createTable', { tables });
+	const avatar = await Avatar.find({user: req.user.id}).sort({created_at: 'desc'});
+	res.render('menu/tables/createTable', { tables, avatar });
 });
 router.get('/main/newTable', isAuthenticated, (req, res) => {
 	res.render('menu/tables/newTable');

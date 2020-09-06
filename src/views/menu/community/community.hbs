@@ -1,8 +1,11 @@
-{{> radio}}
+<div class="position-relative" id="radioDevTable">
+	{{> radio}}
+</div>
+{{> menu}}
 
 
 <div class="container mt-4" id="communityMaster">
-	<div class="card col-8 p-0 mx-auto">
+	<div class="card col-10 p-0 mx-auto">
 		<div class="card-header">
 			<a id="publicateShow" href="#" title=""><i class="fas fa-chevron-down ml-2 float-right"></i></a><a id="publicateHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5"></i></a>
 			<div class="card-title">
@@ -15,14 +18,14 @@
 					<button id="stateShow" class="btn btn-success font-weight-bold btn-block">Estado</button>
 				</div>
 				<div class="card-body">
-					<button class="btn btn-info font-weight-bold btn-block">Informacion</button>
+					<button id="commentsButton" class="btn btn-info font-weight-bold btn-block">Comentarios</button>
 				</div>
 				
 			</div>
 		</div>
-		<div class="card col-6 mt-4 p-0" id="stateCard">
-			<div class="card-header m-0 ">
-				<a id="stateHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5"></i></a>
+		<div class="card col-7 mt-4 p-0 mx-auto m-2" id="stateCard">
+			<div class="card-header m-0 bg-success">
+				<a id="stateHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5 text-danger"></i></a>
 				<div class="card-title m-0">
 					<h4>Publica un Estado</h4>
 				</div>
@@ -45,6 +48,26 @@
 				</form>
 				
 			</div>
+
+
+
+		</div>
+		<div class="card col-7 mx-auto p-0 m-2" id="commentsCard">
+			<div class="card-header bg-primary">
+				<a id="commentsHide"href="#" title=""><i class="fas fa-chevron-up float-right ml-5 text-danger"></i></a>
+				<div class="card-title">
+					<h4>Comentarios</h4>
+				</div>
+			</div>
+			<form action="/main/community/comments" method="POST">
+				<div class="card-body">
+					<input type="hidden" name="username" value="{{user.username}}">
+					<textarea class="form-control" name="comment" placeholder="Escribe tus comentarios"></textarea>
+				</div>
+				<div class="card-footer bg-transparent">
+					<button type="submit" class="btn btn-primary btn-block">Publicar</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -52,26 +75,44 @@
 	
 </div>
 
-<div class="container p-4">
+
+<div class="card p-4">
 	<div class="row">
 		<div class="card-columns p-3">
 			{{#each images}}
-
+				
 			<div class="card p-3">
-				
-				
 				<img src="{{path}}" class="card-img-top" alt="">
 				<div class="card-body">
 					<h5 class="card-title">{{state}}</h5>
 					
-					<p class="float-right">{{username}}</p>
-					
+					<p class="float-right">{{username}}</p>	
 				</div>
 			</div>
 			{{/each}}
 		</div>
+
 	</div>
+	{{#each comment}}
+				
+	<div class="card row p-3 m-3 col-auto">	
+		<div class="card-body">
+			<div class="card-title float-right border-0">
+				<p>{{username}}</p>
+			</div>
+			<div class="card m-3 border-0">
+				<h5 class="card-body">{{comment}}</h5>
+			</div>
+
+			
+			<p class="float-right">{{date}}</p>
+
+		</div>
+	</div>
+	{{/each}}
 </div>
+	
+
 
 
 
@@ -84,23 +125,36 @@
  <script>
  $(document).ready(function(){
  	$('#publicateCard').hide();
+ 	$('#commentsCard').hide();
  	$(document).on('click', '#publicateShow', function(){
- 		$('#publicateCard').show('slow');		
+ 		$('#publicateCard').show('slow');
+
  	});
  	$(document).on('click', '#publicateHide', function(){
  		$('#publicateCard').hide('slow');		
  	});
+
  	
  }); 
 $(document).ready(function(){
 	$('#stateCard').hide();
 	$(document).on('click', '#stateShow', function(){
 		$('#stateCard').show('slow');
+		$('#commentsCard').hide('slow');
 	});
 	$(document).on('click', '#stateHide', function(){
 		$('#stateCard').hide('slow');
 	});
+	$(document).on('click', '#commentsButton', function(){
+		$('#commentsCard').show('slow');
+		$('#stateCard').hide('slow');
+	});
+	$(document).on('click', '#commentsHide', function(){
+		$('#commentsCard').hide('slow');
+	});
+
 });
+
 
 
  </script>
